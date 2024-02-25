@@ -5,7 +5,8 @@
 This project is a wrapper for the HTTP API provided by [Free Currency Converter API](https://freecurrencyapi.com/). It provides a simple way to access the API using V.
 
 > [!NOTE]
-> An API key is required to use the API. It is free to sign up and at the time of writing, the free tier allows for 5000 requests per month.
+> An API key is required to use the API. It is free to sign
+> up and at the time of writing, the free tier allows for 5000 requests per month.
 
 ## Installation
 
@@ -18,8 +19,6 @@ v install https://github.com/hungrybluedev/freecurrencyapi_v
 ## Usage
 
 ```v
-module main
-
 import freecurrencyapi_v
 
 fn main() {
@@ -146,6 +145,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-If you have any urgent requests or need commercial support, please book a call with me. I am available for consulting and development work.
+If you have any urgent requests or need commercial support,
+please book a call with me.
 
 [![Book a call](https://img.shields.io/badge/Book%20a%20call-Consulting-blue?style=for-the-badge)](https://tidycal.com/hungrybluedev)

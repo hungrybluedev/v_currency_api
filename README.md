@@ -50,7 +50,6 @@ fn main() {
 	}
 	println('Latest rates retrieved successfully:\n${rates}')
 }
-
 ```
 
 The output for this would be something like:

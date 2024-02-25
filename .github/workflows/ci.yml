@@ -46,4 +46,4 @@ jobs:
         run: cd freecurrencyapi_v && v should-compile-all examples/
 
       - name: Ensure marks example, can run from an arbitrary working folder
-        run: xlsx/examples/rates
+        run: freecurrencyapi_v/examples/rates

@@ -1,0 +1,49 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * 4"
+
+jobs:
+  code-quality:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Latest V
+        uses: actions/checkout@v4
+        with:
+          repository: vlang/v
+          path: v
+
+      - name: Checkout the Free Currency API Module
+        uses: actions/checkout@v4
+        with:
+          path: freecurrencyapi_v
+
+      - name: Build V
+        run: |
+          cd v && make
+          ./v symlink -githubci && git clone ../freecurrencyapi_v/ ~/.vmodules/freecurrencyapi_v
+
+      - name: Run tests
+        run: cd freecurrencyapi_v && v test .
+
+      - name: Ensure code is formatted
+        run: cd freecurrencyapi_v && v fmt -verify .
+
+      - name: Ensure documentation is OK
+        run: cd freecurrencyapi_v && v check-md .
+
+      - name: Ensure all examples compile
+        run: cd freecurrencyapi_v && v should-compile-all examples/
+
+      - name: Ensure marks example, can run from an arbitrary working folder
+        run: xlsx/examples/rates

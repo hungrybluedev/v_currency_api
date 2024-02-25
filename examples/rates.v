@@ -1,10 +1,14 @@
 module main
 
-import currencies
+import freecurrencyapi_v
+import os
 
 fn main() {
-	client := APIClient{
-		api_key: '<READ THIS FROM A CONFIG FILE>'
+	client := freecurrencyapi_v.APIClient{
+		api_key: os.getenv_opt('FREE_CURRENCY_API_KEY') or {
+			eprintln('Please set the environment variable FREE_CURRENCY_API_KEY')
+			return
+		}
 	}
 
 	status := client.get_status() or {
@@ -13,6 +17,16 @@ fn main() {
 	}
 
 	println(status)
+
+	monthly_quota := status.quotas['month'] or {
+		eprintln('Failed to get monthly quota')
+		return
+	}
+
+	if monthly_quota.remaining <= 4500 {
+		eprintln('Monthly quota exhausted for CI runs. Please run this example locally or use your own API key.')
+		return
+	}
 
 	currencies := client.get_currencies() or {
 		eprintln('Failed to get currencies with error:\n${err}')

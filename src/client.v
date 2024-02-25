@@ -85,7 +85,7 @@ pub struct APIClient {
 
 // get_status retrieves the account status from the Free Currency API. It returns an APIStatus object or an error if the request fails.
 pub fn (client APIClient) get_status() !APIStatus {
-	mut request := http.new_request(.get, currencies.status_url, '')
+	mut request := http.new_request(.get, freecurrencyapi_v.status_url, '')
 	request.add_custom_header('apikey', client.api_key)!
 
 	response := request.do() or { return error('Failed to make request with error:\n${err}') }
@@ -102,7 +102,7 @@ pub fn (client APIClient) get_status() !APIStatus {
 
 // get_currencies retrieves the list of currencies from the Free Currency API. It returns an error if the request fails.
 pub fn (client APIClient) get_currencies() !map[string]CurrencyInfo {
-	mut request := http.new_request(.get, currencies.currencies_url, '')
+	mut request := http.new_request(.get, freecurrencyapi_v.currencies_url, '')
 	request.add_custom_header('apikey', client.api_key)!
 
 	response := request.do() or { return error('Failed to make request with error:\n${err}') }

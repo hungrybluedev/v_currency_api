@@ -1,4 +1,4 @@
-module currencies
+module freecurrencyapi_v
 
 import net.http
 import net.urllib

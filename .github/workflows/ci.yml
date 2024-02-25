@@ -47,3 +47,5 @@ jobs:
 
       - name: Ensure marks example, can run from an arbitrary working folder
         run: freecurrencyapi_v/examples/rates
+        env:
+          FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}

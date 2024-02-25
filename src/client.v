@@ -161,7 +161,7 @@ pub fn (client APIClient) get_latest(config LatestRateConfig) ![]ExchangeRatePai
 		params.add('currencies', config.currencies.join(','))
 	}
 
-	full_endpoint := '${currencies.latest_url}?${params.encode()}'
+	full_endpoint := '${freecurrencyapi_v.latest_url}?${params.encode()}'
 
 	mut request := http.new_request(.get, full_endpoint, '')
 	request.add_custom_header('apikey', client.api_key)!

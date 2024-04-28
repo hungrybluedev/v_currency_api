@@ -80,6 +80,7 @@ pub fn APIStatus.from_json(content string) !APIStatus {
 
 // APIClient is the entity that encapsulates the API key and provides methods to interact with the Free Currency API.
 pub struct APIClient {
+pub:
 	api_key string
 }
 
@@ -134,6 +135,7 @@ pub fn (client APIClient) get_currencies() !map[string]CurrencyInfo {
 // The currencies list is also optional and if not provided, the API will return the rates for all available currencies.
 @[params]
 pub struct LatestRateConfig {
+pub:
 	base_currency string
 	currencies    []string
 }

@@ -26,26 +26,26 @@ jobs:
       - name: Checkout the Free Currency API Module
         uses: actions/checkout@v4
         with:
-          path: freecurrencyapi_v
+          path: v_currency_api
 
       - name: Build V
         run: |
           cd v && make
-          ./v symlink -githubci && git clone ../freecurrencyapi_v/ ~/.vmodules/freecurrencyapi_v
+          ./v symlink -githubci && git clone ../v_currency_api/ ~/.vmodules/v_currency_api
 
       - name: Run tests
-        run: cd freecurrencyapi_v && v test .
+        run: cd v_currency_api && v test .
 
       - name: Ensure code is formatted
-        run: cd freecurrencyapi_v && v fmt -verify .
+        run: cd v_currency_api && v fmt -verify .
 
       - name: Ensure documentation is OK
-        run: cd freecurrencyapi_v && v check-md .
+        run: cd v_currency_api && v check-md .
 
       - name: Ensure all examples compile
-        run: cd freecurrencyapi_v && v should-compile-all examples/
+        run: cd v_currency_api && v should-compile-all examples/
 
       - name: Ensure marks example, can run from an arbitrary working folder
-        run: freecurrencyapi_v/examples/rates
+        run: v_currency_api/examples/rates
         env:
           FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}

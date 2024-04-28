@@ -13,16 +13,16 @@ This project is a wrapper for the HTTP API provided by [Free Currency Converter 
 This package can be installed using the V package manager.
 
 ```bash
-v install https://github.com/hungrybluedev/freecurrencyapi_v
+v install https://github.com/hungrybluedev/v_currency_api
 ```
 
 ## Usage
 
 ```v
-import freecurrencyapi_v
+import v_currency_api
 
 fn main() {
-	client := freecurrencyapi_v.APIClient{
+	client := v_currency_api.APIClient{
 		api_key: '<YOUR API KEY>'
 	}
 
@@ -55,13 +55,13 @@ fn main() {
 The output for this would be something like:
 
 ```
-freecurrencyapi_v.APIStatus{
+v_currency_api.APIStatus{
     account_id: '<YOUR ACCOUNT ID>'
-    quotas: {'month': freecurrencyapi_v.APIQuota{
+    quotas: {'month': v_currency_api.APIQuota{
         total: 5000
         used: 19
         remaining: 4981
-    }, 'grace': freecurrencyapi_v.APIQuota{
+    }, 'grace': v_currency_api.APIQuota{
         total: 0
         used: 0
         remaining: 0
@@ -70,7 +70,7 @@ freecurrencyapi_v.APIStatus{
 Currencies retrieved successfully:
 
 EUR:
-freecurrencyapi_v.CurrencyInfo{
+v_currency_api.CurrencyInfo{
     symbol: '€'
     name: 'Euro'
     symbol_native: '€'
@@ -82,7 +82,7 @@ freecurrencyapi_v.CurrencyInfo{
 }
 
 USD:
-freecurrencyapi_v.CurrencyInfo{
+v_currency_api.CurrencyInfo{
     symbol: '$'
     name: 'US Dollar'
     symbol_native: '$'
@@ -94,7 +94,7 @@ freecurrencyapi_v.CurrencyInfo{
 }
 
 JPY:
-freecurrencyapi_v.CurrencyInfo{
+v_currency_api.CurrencyInfo{
     symbol: '¥'
     name: 'Japanese Yen'
     symbol_native: '￥'
@@ -108,7 +108,7 @@ freecurrencyapi_v.CurrencyInfo{
 ...
 
 ZAR:
-freecurrencyapi_v.CurrencyInfo{
+v_currency_api.CurrencyInfo{
     symbol: 'R'
     name: 'South African Rand'
     symbol_native: 'R'
@@ -120,17 +120,17 @@ freecurrencyapi_v.CurrencyInfo{
 }
 
 Latest rates retrieved successfully:
-[freecurrencyapi_v.ExchangeRatePair{
+[v_currency_api.ExchangeRatePair{
     stamp: 2024-02-25 17:40:59
     base_currency: 'GBP'
     quote_currency: 'EUR'
     rate: 1.170789869
-}, freecurrencyapi_v.ExchangeRatePair{
+}, v_currency_api.ExchangeRatePair{
     stamp: 2024-02-25 17:40:59
     base_currency: 'GBP'
     quote_currency: 'INR'
     rate: 104.963237776
-}, freecurrencyapi_v.ExchangeRatePair{
+}, v_currency_api.ExchangeRatePair{
     stamp: 2024-02-25 17:40:59
     base_currency: 'GBP'
     quote_currency: 'USD'

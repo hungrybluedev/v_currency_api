@@ -1,6 +1,6 @@
 # Binaries for programs and plugins
 main
-freecurrencyapi_v
+v_currency_api
 *.exe
 *.exe~
 *.so

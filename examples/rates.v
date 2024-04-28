@@ -1,10 +1,10 @@
 module main
 
-import freecurrencyapi_v
+import v_currency_api
 import os
 
 fn main() {
-	client := freecurrencyapi_v.APIClient{
+	client := v_currency_api.APIClient{
 		api_key: os.getenv_opt('FREE_CURRENCY_API_KEY') or {
 			panic('Please set the environment variable FREE_CURRENCY_API_KEY')
 		}

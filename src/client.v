@@ -1,4 +1,4 @@
-module freecurrencyapi_v
+module v_currency_api
 
 import net.http
 import net.urllib
@@ -85,7 +85,7 @@ pub struct APIClient {
 
 // get_status retrieves the account status from the Free Currency API. It returns an APIStatus object or an error if the request fails.
 pub fn (client APIClient) get_status() !APIStatus {
-	mut request := http.new_request(.get, freecurrencyapi_v.status_url, '')
+	mut request := http.new_request(.get, v_currency_api.status_url, '')
 	request.add_custom_header('apikey', client.api_key)!
 
 	response := request.do() or { return error('Failed to make request with error:\n${err}') }
@@ -102,7 +102,7 @@ pub fn (client APIClient) get_status() !APIStatus {
 
 // get_currencies retrieves the list of currencies from the Free Currency API. It returns an error if the request fails.
 pub fn (client APIClient) get_currencies() !map[string]CurrencyInfo {
-	mut request := http.new_request(.get, freecurrencyapi_v.currencies_url, '')
+	mut request := http.new_request(.get, v_currency_api.currencies_url, '')
 	request.add_custom_header('apikey', client.api_key)!
 
 	response := request.do() or { return error('Failed to make request with error:\n${err}') }
@@ -161,7 +161,7 @@ pub fn (client APIClient) get_latest(config LatestRateConfig) ![]ExchangeRatePai
 		params.add('currencies', config.currencies.join(','))
 	}
 
-	full_endpoint := '${freecurrencyapi_v.latest_url}?${params.encode()}'
+	full_endpoint := '${v_currency_api.latest_url}?${params.encode()}'
 
 	mut request := http.new_request(.get, full_endpoint, '')
 	request.add_custom_header('apikey', client.api_key)!
